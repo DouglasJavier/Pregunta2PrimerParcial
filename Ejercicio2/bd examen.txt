@@ -1,0 +1,86 @@
+CREATE TABLE persona(
+    ci varchar(9) NOT null,
+    nombre varchar(30),
+    fecha_nac varchar(10),
+    depto varchar(2),
+    PRIMARY KEY(ci)
+);
+CREATE TABLE usuario(
+    usuario varchar(20) null,
+    ci varchar(9),
+    pass varchar(15),
+    tipo varchar(3),
+    color varchar(9),
+    UNIQUE KEY (usuario),
+    PRIMARY KEY(ci)
+);
+CREATE TABLE relacion1(
+    ci varchar(9) not null,
+    usr varchar(9) not null,
+    PRIMARY key (ci),
+    UNIQUE KEY (usr),
+    FOREIGN KEY (ci) REFERENCES persona(ci),
+    FOREIGN KEY (usr) REFERENCES usuario(ci)
+);
+CREATE TABLE nota(
+    cod_nota varchar(5), 
+    ci varchar(9),
+    sigla varchar(7),
+    nota1 integer,
+    nota2 integer,
+    nota3 integer,
+    notaF integer,
+    PRIMARY KEY(cod_nota),
+    FOREIGN KEY (ci) REFERENCES usuario(ci)
+);
+
+insert into persona values('123456','Elva Gomez','30/05/1995','02');
+insert into persona values('654987','Juan Perez','05/04/1996','02');
+insert into persona values('741852','Alan Brito','16/10/1997','02');
+insert into persona values('654741','Maria Frias','12/08/1997','01');
+insert into persona values('951632','Carlos Vega','30/05/1998','01');
+insert into persona values('369845','Alma Gozo','09/01/1997','03');
+insert into persona values('652314','Ana Chavez','03/07/1998','03');
+insert into persona values('984632','Julio Rocha','24/07/1997','07');
+insert into persona values('624853','Yenny Garcia','25/06/1998','07');
+
+insert into usuario values('elvagomez@umsa.bo','123456','123456','est','white');
+insert into usuario values('juanperez@umsa.bo','654987','123456','est','white');
+insert into usuario values('alanbrito@umsa.bo','741852','123456','est','white');
+insert into usuario values('mariafrias@umsa.bo','654741','123456','doc','white');
+insert into usuario values('carlosvega@umsa.bo','951632','123456','est','white');
+insert into usuario values('almagozo@umsa.bo','369845','123456','est','white');
+insert into usuario values('anachavez@umsa.bo','652314','123456','est','white');
+insert into usuario values('juliorocha@umsa.bo','984632','123456','doc','white');
+insert into usuario values('yennygarcia@umsa.bo','624853','123456','est','white');
+
+insert into relacion1 values('123456','123456');
+insert into relacion1 values('654987','654987');
+insert into relacion1 values('741852','741852');
+insert into relacion1 values('654741','654741');
+insert into relacion1 values('951632','951632');
+insert into relacion1 values('369845','369845');
+insert into relacion1 values('652314','652314');
+insert into relacion1 values('984632','984632');
+insert into relacion1 values('624853','624853');
+
+insert into nota values('cod1','123456','INF-112',45,52,62,53);
+insert into nota values('cod2','123456','INF-111',54,47,51,51);
+insert into nota values('cod3','123456','INF-154',74,49,54,59);
+insert into nota values('cod4','654987','INF-112',65,52,65,61);
+insert into nota values('cod5','654987','INF-111',23,56,32,37);
+insert into nota values('cod6','741852','INF-121',48,58,96,67);
+insert into nota values('cod7','741852','MAT-115',75,64,78,72);
+insert into nota values('cod8','741852','INF-112',63,62,45,57);
+insert into nota values('cod9','951632','INF-271',54,63,51,56);
+insert into nota values('cod10','951632','INF-144',39,70,42,50);
+insert into nota values('cod11','951632','INF-272',68,71,63,67);
+insert into nota values('cod12','369845','INF-111',71,56,74,67);
+insert into nota values('cod13','369845','INF-112',63,85,76,75);
+insert into nota values('cod14','369845','INF-121',45,45,72,54);
+insert into nota values('cod15','652314','MAT-115',62,53,35,50);
+insert into nota values('cod16','652314','INF-112',65,40,42,49);
+insert into nota values('cod17','652314','INF-271',75,50,62,62);
+insert into nota values('cod18','624853','INF-319',35,45,45,41);
+insert into nota values('cod19','624853','INF-324',29,48,32,36);
+insert into nota values('cod20','624853','INF-317',75,62,56,64);
